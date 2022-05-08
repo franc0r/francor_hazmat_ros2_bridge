@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  ros_hazmat:
+    network_mode: "host"
+    build:
+      context: ./
+      dockerfile: ros1.hazmat
+    environment:
+      - "ROS_HOSTNAME=localhost"
+      - "ROS_IP=localhost"
+      - "ROS_MASTER_URI=http://localhost:11311"
+
+  bridge:
+    network_mode: "host"
+    build:
+      context: ./
+      dockerfile: ros.bridge
+    environment:
+      - "ROS_HOSTNAME=localhost"
+      - "ROS_MASTER_URI=http://localhost:11311"
+    command: /bin/bash -c "sleep 5s && ros2 run ros1_bridge dynamic_bridge"
