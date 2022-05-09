@@ -46,7 +46,7 @@ ENV ROS_IP=localhost
 RUN /bin/bash -c 'source setup.bash && catkin_make'
 
 # Copy edited launchfile
-COPY docs/hazmat.launch /opt/ros/kinetic/src/ohm_rrl_perception/ohm_rrl_perception_launch/launch
+COPY ohm_rrl_perception/hazmat.launch /opt/ros/kinetic/src/ohm_rrl_perception/ohm_rrl_perception_launch/launch
 
 # Launch node
 CMD /bin/bash -c "source devel/setup.bash && roslaunch ohm_rrl_perception_launch hazmat.launch"

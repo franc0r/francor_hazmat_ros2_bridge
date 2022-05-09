@@ -1,0 +1,10 @@
+<launch>
+  <!-- topics to multiplex -->
+  <arg name="perception_topic"    default="/camera/tele/image_raw"/> 
+  
+  <include file="$(find ohm_rrl_perception_utility)/launch/hazmatdetection.launch" >
+      <arg name="input_image_topic" value="$(arg perception_topic)" />
+      <arg name="img_haz_topic"     value="img_hazmats" />
+  </include>  
+  
+</launch>

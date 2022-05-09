@@ -1,11 +1,11 @@
 version: '3'
 
 services:
-  ros_hazmat:
+  ohm_rrl_perception:
     network_mode: "host"
     build:
       context: ./
-      dockerfile: ros1.hazmat
+      dockerfile: ohm_rrl_perception/Dockerfile
     environment:
       - "ROS_HOSTNAME=localhost"
       - "ROS_IP=localhost"
@@ -13,9 +13,7 @@ services:
 
   bridge:
     network_mode: "host"
-    build:
-      context: ./
-      dockerfile: ros.bridge
+    image: ros:foxy-ros1-bridge
     environment:
       - "ROS_HOSTNAME=localhost"
       - "ROS_MASTER_URI=http://localhost:11311"
